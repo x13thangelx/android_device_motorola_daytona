@@ -1,0 +1,244 @@
+# CDMA RIL ---------------------
+persist.ril.uart.flowctrl=1
+persist.ril.mux.ttydevice=/dev/ttyHS3
+#IKXETNA-176: Increased number of mux channels to include M2M.
+persist.ril.mux.noofchannels=8
+persist.ril.modem.ttydevice=/dev/ttySPI0
+persist.ril.modem.mode=1
+#IKSTABLEFOUR-7865/8078 Enabling MUX_PANIC_NOTIF/DEFAULT_BAND_FEATURE
+persist.ril.features=0x0C
+mot.mdm_panicd.nopanic=yes
+
+ro.hdmi.mirror.enable=false
+ro.hdmi.default.app=
+hw.overlay.path.config=
+
+ro.mot.ril.danlist=611,*611,#611
+persist.ril.ecclist=911,*911,#911
+
+# This defines the max event window manager can
+# handle in 1 s. We may adjust this # for performance
+# reason later
+windowsmgr.max_events_per_sec=70
+
+# for larger screen support
+# 4.3" WVGA == 216dpi
+# 4.3" qHD == 256dpi
+ro.sf.lcd_density=240
+dalvik.vm.heapsize=32m
+
+# required for UDD backup tcmd
+ro.mot.hw.calibratedImager=1
+
+# set default usb mode as usb mass storage
+ro.default_usb_mode=2
+
+# To enable Google Froyo Tethering (USB & WIFI hotspot)
+ro.tether.denied=false
+
+# ro.cdma.homesystem:
+#   List of the icon indexes for Enhanced Roaming Indicator.
+ro.cdma.homesystem=64,65,76,77,78,79,80,81,82,83
+
+# Default network type.
+# 4 => CDMA / EVDO.
+ro.telephony.default_network=4
+ro.com.google.clientid=android-motorola
+ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html
+ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html
+ro.config.vc_call_vol_steps=7
+
+
+# Feature 33857 support DualMode switch, UMTS/CDMA
+# This does not apply to Etna as it is not a Global phone.
+# IKXETNA-337 turned off this flag.
+#ro.mot.FTR.33857=true
+
+# without this property, the lock screen would take global phone as UMTS
+# block user to operate before setup
+keyguard.no_require_sim = true
+
+# set phone mode for lte sim ui
+#ro.mot.phonemode.vzw4gphone=1
+
+ro.cdma.home.operator.numeric=310004
+ro.cdma.home.operator.alpha=Verizon
+
+# Indicate carrier OTA SP number schema
+# refer to frameworks/base/telephony/java/com/android/
+# internal/telephony/cdma/CDMAPhone.java for the schema:
+ro.cdma.otaspnumschema=SELC,1,80,99
+
+# BEGIN Motorola, a20763, 1-Dec-2010, IKMAIN-7617
+# write cdma MIN to property for VVM use in GSM/UMTS mode
+
+persist.radio.cdma.min = 0
+
+# true  Horizontal VVM is preloaded, not allow to install standalone version of
+# VVM from Android Market
+# false Horizontal VVM is not preloaded
+
+ro.HorizontalVVM=true
+
+# END IKMAIN-7617
+
+# The OpenGL ES API level that is natively supported by this device.
+# This is a 16.16 fixed point number
+ro.opengles.version = 131072
+
+# The URL for safety information
+ro.url.safetylegal=http://www.motorola.com/staticfiles/Support/legal
+
+# Enable HAC to also display Call Setting Menu Option.
+ro.mot.hw.HAC=1
+
+# Motorola, a19622, 12/28/2009, IKSHADOW-204 / Location Settings for android
+# Property to set enabling state of the location privacy setting feature.
+# Motorola, a19622, 03/16/2010, IKSHADOW-2141 / Disable feature 33067
+#ro.mot.settings.locprivacy=1
+# ERI feature
+# 0 OFF
+# 1 ON
+ro.mot.eri=1
+
+# Motorol,a6889c,02/Feb/2010,IKSHADOW-619
+# Proximity Sensor feature
+# 0 disable
+# 1 enable
+persist.mot.proximity.touch=1
+
+# BEGIN Motorola, a22976, 25-Feb-2010, IKSHADOW-702, FID 31841
+# VZW Requirement Specifications: NETWORK BASED PLUS CODE DIALING
+# 0 disable
+# 1 enable
+ro.cdma.nbpcd=1
+
+#Proximity sensor debounce time
+mot.proximity.delay=450
+# disable touch below 60 pixels
+mot.proximity.distance=60
+
+# Time between scans in seconds. Keep it high to minimize battery drain.
+# This only affects the case in which there are remembered access points,
+# but none are in range.
+wifi.supplicant_scan_interval = 45
+
+# BEGIN Motorola, nfjb73 23-jun-2010, IKMAIN-624
+# this is for feature 33860, when phone is activated, the cdma mdn is written.
+persist.radio.vzw.cdma.mdn=
+# END Motorola, nfjb73
+
+# BEGIN Motorola, e50202, 3-Sept-2010, IKSTABLETWO-7041, default Mobile Hotspot is on
+ro.mot.mynet=true
+# END IKSTABLETWO-7041
+
+# BEGIN Motorola, a22976, 20-Oct-2010, IKSTABLETWOV-3218
+cdma.nbpcd.supported=false
+# END IKSTABLETWOV-3218
+
+# BEGIN Motorola, a23250, 08-Nov-2010, IKMAIN-7258
+# Packages numbers have increased in stable4,so have to increase config to pass CTS
+# Set correct optimized (lower) value later once all packages are integrated
+# and based on user secure build numbers
+ro.mot.bindervm.config = 165
+# END IKMAIN-7258
+
+# USB modes allowed for UI and switching
+ro.ngp_available=1
+ro.modem_available=0
+
+persist.mot.usb.mediasync = 1
+
+#BEGIN Motorola, dvw873, 5-Jan-2011, IKSTABLETWOV-9499
+# add latin encoding type for sms in cdma mode, this is only for vzw
+ro.cdma.sms.latin_encode=true
+#END IKSTABLETWOV-9499
+
+# Motorola, IKHALFMWK-3, w001091,
+# Feature 32711, deep sleep mode support, IKDAYTONA-846: Re-enable Feature 32711, jqw687
+ro.mot.deep.sleep.supported=true
+
+ro.mot.hw.uaprof=http://uaprof.vtext.com/mot/mb870/mb870.xml
+
+
+# Motorola, IKHALFMWK-3, w001091
+# Feature 32711, deep sleep mode support
+ro.mot.deep.sleep.supported=true
+
+# Set BLAN interface to usb0 to make ftmipcd connect over the correct BLAN interface
+ro.blan.interface=usb0
+
+# Motorola, IKDAYTONA-609, wfs015
+# Feature 35691
+mot.mms.conn.timeout=30000
+mot.mms.socket.timeout=120000
+mot.mms.tr.vc.timeout=55000
+mot.mms.trm.timeout=240000
+mot.mms.abort.prog.lim=90
+mot.mms.retry.pic.size=512000
+mot.mms.retry.default=false
+mot.mms.retry.timeout.1=30000
+mot.mms.retry.timeout.2=180000
+mot.mms.retry.timeout.3=300000
+mot.mms.retry.timeout.4=480000
+# END IKDAYTONA-609
+
+# BEGIN EXTRA MOTO STUFF
+ro.com.google.clientidbase.ms=android-verizon
+ro.com.google.clientidbase.am=android-verizon
+ro.com.google.clientidbase.gmm=android-motorola
+ro.com.google.clientidbase.yt=android-verizon
+rild.libpath=/system/lib/libmoto_ril.so
+persist.ril.mux.retries=500
+persist.ril.mux.sleep=2
+ro.kernel.android.ril=yes
+ro.config.ringtone=Solarium.ogg
+ro.config.notification_sound=regulus.ogg
+ro.config.alarm_alert=Alarm_Classic.ogg
+ro.default_usb_mode=0
+ro.com.google.gmsversion=2.3_r5
+ro.config.sync=no
+ro.browser.useragent=0
+ro.com.google.clientidbase=android-motorola
+ro.config.sync=no
+ro.media.camcorder.720p=mp4,h264,30,12000000,aac,128000,44100,2
+ro.media.camcorder.d1NTSC=mp4,h264,30,6000000,aac,128000,44100,2
+ro.media.camcorder.vga=mp4,h264,30,4000000,aac,128000,44100,2
+ro.media.camcorder.cif=mp4,h264,30,1500000,aac,128000,44100,2
+ro.media.camcorder.qvga=mp4,h264,15,500000,aac,32000,16000,2
+ro.media.camcorder.mms=3gp,h264,15,128000,amrnb,12200,8000,1
+ro.media.camcorder.mmsres=qvga
+ro.camcorder.zoom=true
+ro.media.capture.shuttertone=1
+ro.camcorder.videoModes=false
+ro.telephony.call_ring.multiple=false
+ro.telephony.call_ring.delay=3000
+ro.com.google.clientid=android-motorola
+ro.com.google.clientidbase=android-verizon
+ro.com.google.clientidbase.am=android-verizon
+ro.cdma.data_retry_config=default_randomization=2000,0,0,120000,180000,540000,960000
+ro.mot.setuptype=2
+ro.media.camera.focal=3378.6,3378.6
+ro.media.camera.principal=1632.0,1224.0
+ro.media.camera.skew=0.0
+ro.media.camera.distortion=0.0,0.0,0.0,0.0,0.0
+ro.media.camera.calresolution=3264,2448
+ro.mot.internalsdcard=1
+dalvik.vm.dexopt-flags=m=y
+ro.mot.dpmext=true
+ro.com.google.clientid=android-motorola
+ro.mot.hw.uaprof=http://uaprof.motorola.com/phoneconfig/MotoMB200/profile/MotoMB200.rdf
+ro.build.version.full=ICS_Version.1.3.380.MB870.Verizon.en.US
+ro.mot.hidden_keyboards=evfwd
+
+#END EXTRA MOTO STUFF
+
+################## Additional CM Stuff ##########################
+ro.additionalmounts=/mnt/emmc
+ro.product.use_charge_counter=1
+ro.telephony.ril_class=MotoTegraRIL
+ro.usb.use_custom_service=1
+ro.rommanager.developerid=dragonzkiller
+ro.modversion=DroidX2-ICS-Alpha1
+ro.telephony.ril.v3=datacall
+ro.bt.bdaddr_path=/pds/bt/bt_bdaddr
